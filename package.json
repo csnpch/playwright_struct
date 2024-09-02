@@ -1,0 +1,24 @@
+{
+  "name": "playwrightf",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.46.1",
+    "@types/node": "^22.5.1"
+  },
+  "scripts": {
+    "report": "NODE_ENV=SIT yarn playwright yarn playwright show-report ./playwright-report/",
+    "ui": "yarn playwright test --ui",
+    "sit": "NODE_ENV=SIT yarn playwright test",
+    "sit-ui": "NODE_ENV=SIT yarn playwright test --ui",
+    "sit-report": "yarn playwright show-report ./playwright-report/SIT",
+    "uat": "NODE_ENV=UAT yarn playwright test",
+    "uat-ui": "NODE_ENV=UAT yarn playwright test --ui",
+    "uat-report": "yarn playwright show-report ./playwright-report/UAT"
+  },
+  "dependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/moment": "^2.13.0"
+  }
+}
