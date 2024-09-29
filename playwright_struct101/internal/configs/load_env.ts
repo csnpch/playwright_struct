@@ -25,5 +25,5 @@ export const verifyBaseEnv = async () => {
       error: `NODE_ENV is not valid. Please use one of these: ${list_node_env}`
     })
   }
-  logLevel(`RUN AUTOMATION TESTS AT MODE ${env.NODE_ENV}`)
+  logLevel(`RUN AUTOMATION TESTS AT MODE \`${env.NODE_ENV}\` ENVIRONMENT.`)
 }

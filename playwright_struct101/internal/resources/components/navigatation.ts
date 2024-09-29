@@ -1,6 +1,7 @@
 import { Page } from "@playwright/test"
 import { env } from "../../configs/load_env"
 import { I_RouterDict } from "../../data/dict/router-dict"
+import { default_timeout } from "../../configs/default"
 
 export class NavigationComponent {
   readonly page: Page
@@ -38,8 +39,10 @@ export class NavigationComponent {
     await this.page.reload()
   }
 
-  async closePage() {
-    await this.page.close()
+  async closePage(wait_for_timeout: number = default_timeout.base_timeout) {
+    setTimeout(async () => {
+      await this.page.close()
+    }, wait_for_timeout)
   }
   
 }

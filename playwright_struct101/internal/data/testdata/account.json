@@ -4,9 +4,10 @@
       "username": "standard_user",
       "password": "secret_sauce"
     },
-    "locked_out_user": {
+    "locked_user": {
       "username": "locked_out_user",
-      "password": "secret_sauce"
+      "password": "secret_sauce",
+      "error_message": "Epic sadface: Sorry, this user has been locked out."
     }
   }
 }

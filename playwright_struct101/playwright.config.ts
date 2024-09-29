@@ -21,17 +21,18 @@ export default defineConfig({
   expect: {
     timeout: 10000, // default is 5000
   },
-  testDir: './internal/tests',
+  testDir: './tests',
   fullyParallel: false, // Run tests in files in parallel
   forbidOnly: !!onCI, // Fail the build on CI if you accidentally left `test.only` in the source code.
   retries: onCI ? 2 : 0, // Retry on CI only
   workers: onCI ? 1 : undefined, // Opt out of parallel tests on CI.
   reporter: [ // Reporter to use. See https://playwright.dev/docs/test-reporters
     ['dot'],
-    ['html', { outputFolder: `${baseDirReport}/` }],
-    ['blob', { outputFolder: `${baseDirReport}/` }],
-    // ['junit', { outputFolder: `${baseDirReport}/` }],
-    // ['json', { outputFolder: `${baseDirReport}/` }],
+    ['blob', { outputDir: `${baseDirReport}/blob` }],
+    ['html', { outputFolder: `${baseDirReport}/html` }],
+    ['json', { outputFile: `${baseDirReport}/json/report.json` }],
+    ['junit', { outputFile: `${baseDirReport}/junit/report.xml` }],
+    // (!onCI && ['label', { outputFolder: `...` }] || ['null']),  // if need disabled on local
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -39,7 +40,9 @@ export default defineConfig({
     // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'retain-on-failure', // default is on-first-retry, recommened for CI,
+    trace: {
+      mode: 'retain-on-failure', // default is on-first-retry, recommened for CI,
+    }
   },
 
   /* Configure projects for major browsers */
